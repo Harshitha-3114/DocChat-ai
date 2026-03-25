@@ -12,6 +12,7 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+            iframe { border-radius: 8px; }
     @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
 
     * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
@@ -216,7 +217,7 @@ with left:
             st.session_state.pdf_store[st.session_state.active_pdf]["bytes"]
         ).decode()
         st.markdown(
-            f'<iframe src="data:application/pdf;base64,{b64}#toolbar=0" '
+            f'<iframe src="data:application/pdf;base64,{b64}" '
             f'width="100%" height="760px" style="border:none;display:block;background:#fdf8f2;border-radius:8px;"></iframe>',
             unsafe_allow_html=True,
         )
