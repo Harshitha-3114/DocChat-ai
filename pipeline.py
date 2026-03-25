@@ -10,8 +10,9 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
-GROQ_KEY = os.getenv("GROQ_KEY", "")
-
+# GROQ_KEY = os.getenv("GROQ_KEY", "")
+import streamlit as st
+GROQ_KEY = st.secrets.get("GROQ_KEY") or os.getenv("GROQ_KEY", "")
 
 def extract_text_from_pdfs(pdf_files):
     """Returns dict: {filename: extracted_text}"""
