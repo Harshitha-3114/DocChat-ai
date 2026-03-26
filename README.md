@@ -1,4 +1,4 @@
-# 🧠 DocChat AI
+# 📄 DocChat AI
 
 > Chat with your PDF documents using AI — instantly find answers, extract insights, and explore content through conversation.
 
