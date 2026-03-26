@@ -1,3 +1,4 @@
+import fitz
 import streamlit as st
 from pipeline import extract_text_from_pdfs, build_vector_store, build_conversation_chain
 import base64
@@ -213,14 +214,17 @@ with left:
             st.session_state.chat_history = []
             st.rerun()
 
-        b64 = base64.b64encode(
-            st.session_state.pdf_store[st.session_state.active_pdf]["bytes"]
-        ).decode()
-        st.markdown(
-            f'<iframe src="data:application/pdf;base64,{b64}" '
-            f'width="100%" height="760px" style="border:none;display:block;background:#fdf8f2;border-radius:8px;"></iframe>',
-            unsafe_allow_html=True,
-        )
+        import fitz
+        pdf_bytes = st.session_state.pdf_store[st.session_state.active_pdf]["bytes"]
+        doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+        total_pages = len(doc)
+        page_num = st.number_input(
+            f"Page (1–{total_pages})", min_value=1, max_value=total_pages, value=1, step=1) - 1
+        page = doc[page_num]
+        mat = fitz.Matrix(1.8, 1.8)
+        pix = page.get_pixmap(matrix=mat)
+        img_bytes = pix.tobytes("png")
+        st.image(img_bytes, use_container_width=True)
         st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
         if st.button("↩ Upload new PDFs"):
             st.session_state.pdf_store = {}
