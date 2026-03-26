@@ -8,11 +8,10 @@
 
 ## 📽 Demo Video
 
-<!-- Upload your demo video below — replace the placeholder -->
+
 
 https://github.com/YOUR_USERNAME/chat-with-pdf/assets/YOUR_ASSET_ID/YOUR_VIDEO_FILE.mp4
 
-> _To add your video: go to your GitHub repo → open any Issue → drag and drop your .mp4 into the comment box → copy the generated link → paste it above replacing the placeholder. Then close the issue without submitting._
 
 ---
 
@@ -54,17 +53,16 @@ cd chat-with-pdf
 pip install -r requirements.txt
 ```
 
-**3. Add your API keys**
+**3. Add your API key**
 
-Create a `.streamlit/secrets.toml` file:
-```toml
-GROQ_KEY       = "your_groq_api_key"
-GEMINI_API_KEY = "your_gemini_api_key"
+Create a `.env` file in the project root:
+```
+GROQ_KEY=your_groq_api_key_here
 ```
 
-Get free keys:
-- Groq → [console.groq.com](https://console.groq.com)
-- Gemini → [aistudio.google.com](https://aistudio.google.com)
+Get a free Groq key → [console.groq.com](https://console.groq.com)
+
+
 
 **4. Run**
 ```bash
@@ -82,8 +80,8 @@ chat-with-pdf/
 ├── app.py             # Streamlit UI — layout, styling, chat logic
 ├── pipeline.py        # RAG core — chunking, embeddings, retrieval, LLM
 ├── requirements.txt
-└── .streamlit/
-    └── secrets.toml   # API keys — never commit this file
+├── .env               # API key — never commit this
+└── .gitignore
 ```
 
 ---
@@ -93,25 +91,24 @@ chat-with-pdf/
 ```
 PDF Upload → Text Extraction (PyMuPDF)
           → Chunking (1000 chars, 200 overlap)
-          → Embeddings (HuggingFace all-MiniLM-L6-v2)
+          → Embeddings (HuggingFace all-MiniLM-L6-v2, runs locally)
           → FAISS Vector Index
 
 User Question → Embed Question (same model)
              → Cosine Similarity Search → Top 4 chunks retrieved
-             → Llama 3.3 generates answer with citation
+             → Llama 3.3 70B generates answer with citation
              → 3 follow-up suggestions returned
 ```
 
 ---
 
-## 📌 Resume Bullet Points
+## ☁️ Deploying to Streamlit Cloud
 
-- Built an end-to-end RAG pipeline with semantic chunking, HuggingFace embeddings, and FAISS vector similarity search
-- Integrated Llama 3.3 70B via Groq API for grounded answer generation with automatic source citation and follow-up suggestions
-- Deployed as a production web app on Streamlit Cloud at zero infrastructure cost — live at [docchat-ai-skupcjz8kuszknxanrejqg.streamlit.app](https://docchat-ai-skupcjz8kuszknxanrejqg.streamlit.app)
+1. Push code to GitHub (without `.env`)
+2. Go to [share.streamlit.io](https://share.streamlit.io) → **New app** → select your repo
+3. Under **Advanced settings → Secrets**, add:
+```toml
+GROQ_KEY = "your_groq_api_key_here"
+```
+4. Click **Deploy** — live in ~2 minutes
 
----
-
-## 📜 License
-
-MIT — free to use, modify, and distribute.
