@@ -13,103 +13,150 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-            iframe { border-radius: 8px; }
-    @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
 
     * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
     #MainMenu, footer, header { visibility: hidden; }
     .block-container { padding: 0 !important; max-width: 100% !important; }
 
+    /* ── Navbar ── */
     .navbar {
         display: flex; align-items: center; justify-content: space-between;
-        padding: 14px 28px; border-bottom: 1px solid #e8d5b0;
-        background: #f5ebe0;
+        padding: 16px 32px; border-bottom: 2px solid #d4a89a;
+        background: #f5ebe6;
     }
     .navbar-logo {
-        font-family: 'Lora', serif; font-size: 20px; font-weight: 600;
-        color: #1a1a1a; display: flex; align-items: center; gap: 8px;
+        font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800;
+        color: #1a0a00; display: flex; align-items: center; gap: 10px;
     }
-    .navbar-logo span { color: #d97706; }
-    .navbar-right { display: flex; align-items: center; gap: 10px; }
+    .navbar-logo span { color: #b91c1c; }
     .navbar-badge {
-        background: #fff8ed; color: #92400e; border-radius: 20px;
-        padding: 4px 14px; font-size: 12px; border: 1px solid #e8d5b0;
-        font-weight: 500;
+        background: #fff1ee; color: #7f1d1d; border-radius: 20px;
+        padding: 5px 16px; font-size: 12px; border: 1.5px solid #d4a89a;
+        font-weight: 600; letter-spacing: 0.03em;
     }
 
+    /* ── PDF tabs ── */
     .pdf-tab-row {
         display: flex; flex-wrap: wrap; gap: 6px;
-        padding: 10px 14px; background: #fdf8f2;
-        border-bottom: 1px solid #e8d5b0;
+        padding: 10px 14px; background: #fdf5f3;
+        border-bottom: 1px solid #e8c8c0;
     }
     .pdf-tab {
-        background: #ffffff; color: #1a1a1a; border-radius: 20px;
-        padding: 5px 14px; font-size: 12px; cursor: pointer;
-        border: 1.5px solid #d4a96a; transition: all 0.15s;
-        white-space: nowrap; max-width: 180px; overflow: hidden;
-        text-overflow: ellipsis; font-weight: 500;
+        background: #ffffff; color: #7f1d1d; border-radius: 20px;
+        padding: 5px 16px; font-size: 12px; cursor: pointer;
+        border: 1.5px solid #d4a89a; transition: all 0.15s;
+        white-space: nowrap; max-width: 200px; overflow: hidden;
+        text-overflow: ellipsis; font-weight: 600;
     }
-    .pdf-tab:hover { background: #fff3e0; border-color: #d97706; }
-    .pdf-tab.active { background: #d97706; color: #fff; border-color: #d97706; font-weight: 700; }
+    .pdf-tab:hover { background: #fde8e4; border-color: #b91c1c; }
+    .pdf-tab.active { background: #b91c1c; color: #fff; border-color: #b91c1c; }
 
+    /* ── Upload zone ── */
     .upload-zone {
-        border: 2px dashed #d4a96a; border-radius: 16px; padding: 52px 24px;
-        text-align: center; background: #fdf8f2; margin: 24px 20px;
+        border: 2px dashed #d4a89a; border-radius: 16px; padding: 56px 24px;
+        text-align: center; background: #fdf5f3; margin: 24px 20px;
     }
 
+    /* ── Chat header ── */
     .chat-header {
-        padding: 13px 20px; border-bottom: 1px solid #e8d5b0;
-        font-family: 'Lora', serif; font-weight: 600;
-        font-size: 16px; color: #1a1a1a; background: #fdf8f2;
-        display: flex; justify-content: space-between; align-items: center;
+        padding: 14px 20px; border-bottom: 2px solid #e8c8c0;
+        font-family: 'Playfair Display', serif; font-weight: 700;
+        font-size: 18px; color: #1a0a00; background: #fdf5f3;
     }
 
+    /* ── Citation box ── */
     .citation-box {
-        background: #fff8ed; border-left: 3px solid #d97706;
-        border-radius: 0 8px 8px 0; padding: 7px 12px;
-        font-size: 12px; color: #92400e; margin-top: 8px; font-weight: 500;
+        background: #fff1ee; border-left: 3px solid #b91c1c;
+        border-radius: 0 8px 8px 0; padding: 8px 14px;
+        font-size: 12px; color: #7f1d1d; margin-top: 8px; font-weight: 600;
     }
 
-    .stApp { background: #fdf8f2 !important; }
+    /* ── App background ── */
+    .stApp { background: #fdf5f3 !important; }
+            .stButton > button[kind="secondary"] {
+    background: #fff1ee !important; 
+    color: #7f1d1d !important;
+    border: 1.5px solid #d4a89a !important;
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+}
     section[data-testid="stSidebar"] { display: none; }
 
+    /* ── Chat input ── */
     .stChatInput > div {
-        border-radius: 24px !important; border: 1.5px solid #d4a96a !important;
+        border-radius: 24px !important; border: 2px solid #d4a89a !important;
         background: #ffffff !important;
     }
-    .stChatInput > div:focus-within { border-color: #d97706 !important; box-shadow: 0 0 0 3px #fde68a55 !important; }
-    .stChatInput input { color: #1a1a1a !important; font-weight: 500 !important; }
+    .stChatInput > div:focus-within {
+        border-color: #b91c1c !important;
+        box-shadow: 0 0 0 3px rgba(185,28,28,0.12) !important;
+    }
+    .stChatInput input { color: #1a0a00 !important; font-weight: 500 !important; }
 
+    /* ── Buttons ── */
     .stButton > button {
-        background: #d97706 !important; color: #ffffff !important;
+        background: #b91c1c !important; color: #ffffff !important;
         border: none !important; border-radius: 10px !important;
-        padding: 8px 22px !important; font-weight: 700 !important;
+        padding: 9px 24px !important; font-weight: 700 !important;
         font-family: 'Inter', sans-serif !important;
         transition: all 0.15s !important;
-        box-shadow: 0 2px 6px rgba(217,119,6,0.3) !important;
+        box-shadow: 0 2px 8px rgba(185,28,28,0.25) !important;
+        letter-spacing: 0.02em !important;
     }
-    .stButton > button:hover { background: #b45309 !important; }
+    .stButton > button:hover {
+        background: #991b1b !important;
+        box-shadow: 0 4px 14px rgba(185,28,28,0.35) !important;
+    }
 
-    div[data-testid="stFileUploader"] label { color: #1a1a1a !important; font-weight: 600 !important; }
-    div[data-testid="stFileUploader"] section { background: #ffffff !important; border-color: #d4a96a !important; border-radius: 10px !important; }
+    /* ── File uploader ── */
+    div[data-testid="stFileUploader"] label { color: #1a0a00 !important; font-weight: 700 !important; }
+    div[data-testid="stFileUploader"] section {
+        background: #ffffff !important; border-color: #d4a89a !important;
+        border-radius: 12px !important;
+    }
 
-    .stSelectbox label { color: #1a1a1a !important; font-size: 12px !important; font-weight: 600 !important; }
+    /* ── Selectbox ── */
+    .stSelectbox label { color: #7f1d1d !important; font-size: 12px !important; font-weight: 700 !important; }
     .stSelectbox > div > div {
-        background: #ffffff !important; color: #1a1a1a !important;
-        border-color: #d4a96a !important; border-radius: 8px !important;
+        background: #ffffff !important; color: #1a0a00 !important;
+        border-color: #d4a89a !important; border-radius: 8px !important;
         font-weight: 500 !important;
     }
 
-    .stSpinner { color: #d97706 !important; }
-    .stChatMessage { background: transparent !important; }
-    [data-testid="stChatMessageContent"] p { color: #1a1a1a !important; font-weight: 400 !important; line-height: 1.7 !important; }
-
-    .stDownloadButton > button {
-        background: #fff8ed !important; color: #92400e !important;
-        border: 1.5px solid #d4a96a !important; border-radius: 8px !important;
-        font-size: 13px !important; padding: 6px 14px !important; font-weight: 700 !important;
+    /* ── Number input ── */
+    .stNumberInput label { color: #7f1d1d !important; font-weight: 600 !important; font-size: 13px !important; }
+    .stNumberInput input { 
+        background: #ffffff !important; color: #1a0a00 !important;
+        border-color: #d4a89a !important; border-radius: 8px !important;
+        font-weight: 600 !important;
     }
-    .stDownloadButton > button:hover { background: #fde68a !important; }
+
+    /* ── Chat messages ── */
+    .stSpinner { color: #b91c1c !important; }
+    .stChatMessage { background: transparent !important; }
+    [data-testid="stChatMessageContent"] p {
+    color: #1a0a00 !important; font-weight: 500 !important; line-height: 1.75 !important;
+}
+[data-testid="stChatMessageContent"] li {
+    color: #1a0a00 !important; font-weight: 500 !important; line-height: 1.75 !important;
+}
+[data-testid="stChatMessageContent"] {
+    color: #1a0a00 !important;
+}
+
+    /* ── Download button ── */
+    .stDownloadButton > button {
+        background: #fff1ee !important; color: #7f1d1d !important;
+        border: 1.5px solid #d4a89a !important; border-radius: 8px !important;
+        font-size: 13px !important; padding: 6px 16px !important; font-weight: 700 !important;
+    }
+    .stDownloadButton > button:hover { background: #fde8e4 !important; border-color: #b91c1c !important; }
+
+    /* ── Divider line between columns ── */
+    [data-testid="column"]:first-child {
+        border-right: 1px solid #e8c8c0;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -129,9 +176,7 @@ for key, val in {
 st.markdown("""
 <div class="navbar">
     <div class="navbar-logo">📄 Doc<span>Chat</span> AI</div>
-    <div class="navbar-right">
-        <div class="navbar-badge">Gemini · Llama 3.3 · Free ✨</div>
-    </div>
+    <div class="navbar-badge">✦ Llama 3.3 · HuggingFace · Free</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -140,7 +185,7 @@ left, right = st.columns([1.1, 0.9], gap="small")
 # ── LEFT: PDF viewer ──────────────────────────────────────────────────────────
 with left:
     if not st.session_state.processed:
-        st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:20px'></div>", unsafe_allow_html=True)
         uploaded_files = st.file_uploader(
             "Upload up to 5 PDFs",
             type=["pdf"],
@@ -151,12 +196,12 @@ with left:
             uploaded_files = uploaded_files[:5]
             for f in uploaded_files:
                 st.markdown(
-                    f"<div style='background:#fff8ed;color:#92400e;border:1.5px solid #d4a96a;"
-                    f"border-radius:6px;padding:5px 12px;margin:4px 20px;font-size:13px;display:inline-block;font-weight:600;'>"
-                    f"📄 {f.name}</div>",
+                    f"<div style='background:#fff1ee;color:#7f1d1d;border:1.5px solid #d4a89a;"
+                    f"border-radius:8px;padding:6px 14px;margin:4px 20px;font-size:13px;"
+                    f"display:inline-block;font-weight:700;'>📄 {f.name}</div>",
                     unsafe_allow_html=True
                 )
-            st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
+            st.markdown("<div style='height:14px'></div>", unsafe_allow_html=True)
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
                 if st.button("⚡ Process & Start Chat"):
@@ -182,21 +227,22 @@ with left:
         else:
             st.markdown("""
             <div class='upload-zone'>
-                <div style='font-size:40px;margin-bottom:12px'>📂</div>
-                <div style='font-family:Lora,serif;font-weight:600;color:#1a1a1a;font-size:16px'>
+                <div style='font-size:44px;margin-bottom:14px'>📂</div>
+                <div style='font-family:Playfair Display,serif;font-weight:700;color:#1a0a00;font-size:18px;'>
                     Drop up to 5 PDFs here
                 </div>
-                <div style='margin-top:6px;font-size:13px;color:#92400e;font-weight:500'>
+                <div style='margin-top:8px;font-size:13px;color:#7f1d1d;font-weight:500;'>
                     Each PDF gets its own index — switch between them instantly
                 </div>
             </div>
             """, unsafe_allow_html=True)
     else:
+        # PDF tab row
         names = list(st.session_state.pdf_store.keys())
         tabs_html = "<div class='pdf-tab-row'>"
         for n in names:
             active_class = "active" if n == st.session_state.active_pdf else ""
-            short = n if len(n) <= 22 else n[:20] + "…"
+            short = n if len(n) <= 24 else n[:22] + "…"
             tabs_html += f"<div class='pdf-tab {active_class}' title='{n}'>📄 {short}</div>"
         tabs_html += "</div>"
         st.markdown(tabs_html, unsafe_allow_html=True)
@@ -214,18 +260,23 @@ with left:
             st.session_state.chat_history = []
             st.rerun()
 
-        import fitz
+        # Render PDF as image
         pdf_bytes = st.session_state.pdf_store[st.session_state.active_pdf]["bytes"]
         doc = fitz.open(stream=pdf_bytes, filetype="pdf")
         total_pages = len(doc)
+
         page_num = st.number_input(
-            f"Page (1–{total_pages})", min_value=1, max_value=total_pages, value=1, step=1) - 1
+            f"Page (1 – {total_pages})",
+            min_value=1, max_value=total_pages, value=1, step=1
+        ) - 1
+
         page = doc[page_num]
         mat = fitz.Matrix(1.8, 1.8)
         pix = page.get_pixmap(matrix=mat)
         img_bytes = pix.tobytes("png")
         st.image(img_bytes, use_container_width=True)
-        st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
+
+        st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
         if st.button("↩ Upload new PDFs"):
             st.session_state.pdf_store = {}
             st.session_state.active_pdf = None
@@ -241,8 +292,10 @@ with right:
         st.markdown("<div class='chat-header'>💬 Chat</div>", unsafe_allow_html=True)
     with header_right:
         if st.session_state.chat_history:
-            lines = [f"DocChat AI — Export\n{datetime.now().strftime('%Y-%m-%d %H:%M')}\n",
-                     f"PDF: {st.session_state.active_pdf}\n", "=" * 50 + "\n"]
+            lines = [
+                f"DocChat AI — Export\n{datetime.now().strftime('%Y-%m-%d %H:%M')}\n",
+                f"PDF: {st.session_state.active_pdf}\n", "=" * 50 + "\n"
+            ]
             for msg in st.session_state.chat_history:
                 role = "You" if msg["role"] == "user" else "AI"
                 lines.append(f"{role}: {msg['content']}\n")
@@ -259,20 +312,23 @@ with right:
     if not st.session_state.processed:
         st.markdown("""
         <div style='display:flex;flex-direction:column;align-items:center;
-                    justify-content:center;height:65vh;text-align:center;gap:12px;'>
-            <div style='font-size:44px'>💬</div>
-            <div style='font-family:Lora,serif;font-weight:600;font-size:16px;color:#1a1a1a'>
+                    justify-content:center;height:65vh;text-align:center;gap:14px;'>
+            <div style='font-size:48px'>💬</div>
+            <div style='font-family:Playfair Display,serif;font-weight:700;font-size:18px;color:#1a0a00;'>
                 No PDF loaded yet
             </div>
-            <div style='font-size:13px;color:#92400e;font-weight:500'>Upload and process PDFs to start chatting</div>
+            <div style='font-size:13px;color:#7f1d1d;font-weight:500;'>
+                Upload and process a PDF to start chatting
+            </div>
         </div>
         """, unsafe_allow_html=True)
     else:
-        chat_container = st.container(height=580)
+        chat_container = st.container(height=720)
         with chat_container:
             if not st.session_state.chat_history:
                 st.markdown("""
-                <div style='text-align:center;color:#92400e;font-size:13px;padding:48px 20px;font-weight:500'>
+                <div style='text-align:center;color:#7f1d1d;font-size:13px;
+                            padding:52px 20px;font-weight:600;'>
                     ✅ PDF ready — ask anything about it!
                 </div>
                 """, unsafe_allow_html=True)
@@ -319,3 +375,20 @@ with right:
                 "suggestions": result.get("suggestions", []),
             })
             st.rerun()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

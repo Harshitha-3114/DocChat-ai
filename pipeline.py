@@ -15,7 +15,7 @@ import streamlit as st
 try:
     GROQ_KEY = st.secrets.get("GROQ_KEY") or os.getenv("GROQ_KEY", "")
 except Exception:
-    GROQ_KEY = os.getenv("GROQ_KEY", "your_groq_key_here")
+    GROQ_KEY = os.getenv("GROQ_KEY", "YOUR_GROQ_KEY")
 
 
 
