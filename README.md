@@ -16,7 +16,12 @@
 ## 🎬 Demo
 
 <!-- Drag and drop your screen recording below -->
-<!-- Go to GitHub → New Issue → drag your .mp4 → copy link → paste here → close issue -->
+<!-- Go to GitHub → New Issue → drag your .mp4 → cop
+
+https://github.com/user-attachments/assets/f6602b21-0907-434f-9801-faa12db27aec
+
+y link → paste here → close issue -->
+
 
 https://github.com/YOUR_USERNAME/chat-with-pdf/assets/YOUR_ASSET_ID/YOUR_VIDEO.mp4
 
@@ -68,7 +73,7 @@ GROQ_KEY=your_groq_api_key_here
 ```
 Get a free Groq key → [console.groq.com](https://console.groq.com)
 
-> ⚠️ Never commit your `.env` file — it is listed in `.gitignore`.
+
 
 **4. Run the app**
 ```bash
@@ -119,6 +124,4 @@ GROQ_KEY = "your_groq_api_key_here"
 
 ---
 
-## 📜 License
 
-MIT — free to use, modify, and distribute.
