@@ -23,6 +23,10 @@ https://github.com/user-attachments/assets/f6602b21-0907-434f-9801-faa12db27aec
 y link → paste here → close issue -->
 
 
+
+https://github.com/user-attachments/assets/0c54bbc5-7ad4-4b37-a3a5-3c1847072e0f
+
+
 https://github.com/YOUR_USERNAME/chat-with-pdf/assets/YOUR_ASSET_ID/YOUR_VIDEO.mp4
 
 ---
