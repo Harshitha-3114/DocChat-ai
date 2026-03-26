@@ -1,6 +1,6 @@
 # 📄 DocChat AI
 
-> Chat with your PDF documents using AI — instantly find answers, extract insights, and explore content through conversation.
+> Chat with your PDF documents using AI - instantly find answers, extract insights, and explore content through conversation.
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-black?style=flat-square)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square)
