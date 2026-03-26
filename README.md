@@ -1,29 +1,36 @@
-# 📄 DocChat AI
+# 🧠 DocChat AI
 
 > Chat with your PDF documents using AI — instantly find answers, extract insights, and explore content through conversation.
 
-🔗 **Live Demo:** [docchat-ai-skupcjz8kuszknxanrejqg.streamlit.app](https://docchat-ai-skupcjz8kuszknxanrejqg.streamlit.app)
+![Python](https://img.shields.io/badge/Python-3.10%2B-black?style=flat-square)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21F?style=flat-square&logoColor=black)
+![AI](https://img.shields.io/badge/AI-Llama%203.3%2070B-orange?style=flat-square)
+![FAISS](https://img.shields.io/badge/FAISS-Vector%20DB-blue?style=flat-square)
+
+🔗 **Live App:** [docchat-ai-skupcjz8kuszknxanrejqg.streamlit.app](https://docchat-ai-skupcjz8kuszknxanrejqg.streamlit.app)
 
 ---
 
-## 📽 Demo Video
+## 🎬 Demo
 
+<!-- Drag and drop your screen recording below -->
+<!-- Go to GitHub → New Issue → drag your .mp4 → copy link → paste here → close issue -->
 
-
-https://github.com/YOUR_USERNAME/chat-with-pdf/assets/YOUR_ASSET_ID/YOUR_VIDEO_FILE.mp4
-
+https://github.com/YOUR_USERNAME/chat-with-pdf/assets/YOUR_ASSET_ID/YOUR_VIDEO.mp4
 
 ---
 
 ## ✨ Features
 
-- **Multi-PDF support** — upload up to 5 PDFs, each with its own index
-- **Side-by-side layout** — PDF viewer and chat panel visible simultaneously
-- **Smart retrieval** — finds the most relevant chunks using semantic search
-- **Citation tracking** — every answer shows the exact source section used
-- **Follow-up suggestions** — AI suggests 3 related questions after each answer
-- **Export chat** — download your full conversation as a `.txt` file
-- **100% free** — no paid APIs, no subscriptions, no database required
+- 📂 **Multi-PDF support** — upload up to 5 PDFs, each with its own index
+- 🖥 **Side-by-side layout** — PDF viewer and chat panel visible simultaneously
+- 🔍 **Semantic search** — retrieves the most relevant chunks for every question
+- 📌 **Citation tracking** — every answer shows the exact source section used
+- 💡 **Follow-up suggestions** — AI suggests 3 related questions after each answer
+- ⬇️ **Export chat** — download full conversation as a `.txt` file
+- 🆓 **100% free** — no paid APIs, no subscriptions, no database
 
 ---
 
@@ -34,13 +41,13 @@ https://github.com/YOUR_USERNAME/chat-with-pdf/assets/YOUR_ASSET_ID/YOUR_VIDEO_F
 | Frontend | Streamlit |
 | LLM | Llama 3.3 70B via Groq API (free tier) |
 | Embeddings | HuggingFace `all-MiniLM-L6-v2` (runs locally) |
-| Vector Store | FAISS (in-memory, no external DB) |
+| Vector Store | FAISS (in-memory) |
 | PDF Parsing | PyMuPDF |
 | Orchestration | LangChain |
 
 ---
 
-## 🚀 Run Locally
+## 🚀 Getting Started
 
 **1. Clone the repo**
 ```bash
@@ -59,16 +66,14 @@ Create a `.env` file in the project root:
 ```
 GROQ_KEY=your_groq_api_key_here
 ```
-
 Get a free Groq key → [console.groq.com](https://console.groq.com)
 
+> ⚠️ Never commit your `.env` file — it is listed in `.gitignore`.
 
-
-**4. Run**
+**4. Run the app**
 ```bash
 streamlit run app.py
 ```
-
 Opens at `http://localhost:8501`
 
 ---
@@ -80,7 +85,7 @@ chat-with-pdf/
 ├── app.py             # Streamlit UI — layout, styling, chat logic
 ├── pipeline.py        # RAG core — chunking, embeddings, retrieval, LLM
 ├── requirements.txt
-├── .env               # API key — never commit this
+├── .env               # API keys — never commit this
 └── .gitignore
 ```
 
@@ -89,26 +94,31 @@ chat-with-pdf/
 ## 💡 How It Works
 
 ```
-PDF Upload → Text Extraction (PyMuPDF)
-          → Chunking (1000 chars, 200 overlap)
-          → Embeddings (HuggingFace all-MiniLM-L6-v2, runs locally)
-          → FAISS Vector Index
+PDF Upload ──► Text Extraction (PyMuPDF)
+           ──► Chunking (1000 chars, 200 overlap)
+           ──► Embeddings (HuggingFace all-MiniLM-L6-v2)
+           ──► FAISS Vector Index
 
-User Question → Embed Question (same model)
-             → Cosine Similarity Search → Top 4 chunks retrieved
-             → Llama 3.3 70B generates answer with citation
-             → 3 follow-up suggestions returned
+User Question ──► Embed Question (same model)
+              ──► Cosine Similarity Search ──► Top 4 chunks
+              ──► Llama 3.3 generates answer + citation
+              ──► 3 follow-up suggestions returned
 ```
 
 ---
 
-## ☁️ Deploying to Streamlit Cloud
+## ☁️ Deploy on Streamlit Cloud
 
 1. Push code to GitHub (without `.env`)
 2. Go to [share.streamlit.io](https://share.streamlit.io) → **New app** → select your repo
-3. Under **Advanced settings → Secrets**, add:
+3. Under **Advanced settings → Secrets**, paste:
 ```toml
 GROQ_KEY = "your_groq_api_key_here"
 ```
-4. Click **Deploy** — live in ~2 minutes
+4. Click **Deploy** — live in ~2 minutes ✅
 
+---
+
+## 📜 License
+
+MIT — free to use, modify, and distribute.
